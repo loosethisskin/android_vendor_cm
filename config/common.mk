@@ -163,7 +163,6 @@ PRODUCT_PACKAGES += \
     audio_effects.conf \
     CMWallpapers \
     Apollo \
-    CMUpdater \
     CMFileManager \
     LockClock \
     CMAccount
