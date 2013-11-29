@@ -210,7 +210,6 @@ PRODUCT_PACKAGES += \
 ifneq ($(TARGET_BUILD_VARIANT),user)
 
 PRODUCT_PACKAGES += \
-    CMUpdater \
     Superuser \
     su
 
@@ -222,9 +221,6 @@ PRODUCT_COPY_FILES +=  \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=1
 else
-
-PRODUCT_PACKAGES += \
-    CMFota
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=0
