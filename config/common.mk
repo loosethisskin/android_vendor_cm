@@ -147,8 +147,7 @@ PRODUCT_PACKAGES += \
     CMWallpapers \
     Apollo \
     CMFileManager \
-    LockClock \
-    WhisperPush
+    LockClock
 
 # CM Hardware Abstraction Framework
 PRODUCT_PACKAGES += \
