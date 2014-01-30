@@ -129,8 +129,8 @@ PRODUCT_PACKAGES += \
     Basic \
     libemoji
 
-PRODUCT_PACKAGES += \
-    Trebuchet
+# Custom CM packages
+    #Trebuchet \
 
 PRODUCT_PACKAGES += \
     Launcher3 \
