@@ -66,6 +66,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
+# Disable multithreaded dexopt by default
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.dalvik.multithread=false
+
 # Thank you, please drive thru!
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
 
@@ -170,6 +174,9 @@ PRODUCT_PACKAGES += \
     mount.exfat \
     fsck.exfat \
     mkfs.exfat \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs \
     ntfsfix \
     ntfs-3g \
     gdbserver \
@@ -221,9 +228,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=0
 
 endif
-
-# easy way to extend to add more packages
--include vendor/extra/product.mk
 
 PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
 
@@ -332,12 +336,8 @@ PRODUCT_PROPERTY_OVERRIDES += persist.sys.recovery_update=false
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.display.version=$(CM_DISPLAY_VERSION)
 
-# disable multithreaded dextop for RELEASE and SNAPSHOT builds
-ifneq ($(filter RELEASE SNAPSHOT,$(CM_BUILDTYPE)),)
-PRODUCT_PROPERTY_OVERRIDES += \
-  persist.sys.dalvik.multithread=false
-endif
-
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 -include vendor/cyngn/product.mk
+
+$(call inherit-product-if-exists, vendor/extra/product.mk)
